@@ -28,20 +28,8 @@ $('#localStorageForm')
       }
     }
   })
-  .on('click', '.botonAgregarRespuesta', function() {
-    var $template = $('#optionTemplate'),
-      $clone = $template
-      .clone()
-      .removeClass('hide')
-      .attr('id', "respuesta" + this.cantRespuestas)
-      .insertBefore($template),
-      $option = $clone.find('[name="option[]"]');
 
-    // agregado de nuevo campo al formulario
-    $('#localStorageForm').formValidation('addField', $option);
-  })
-
-  // Manejo del boton agregar respuesta
+  // Manejo del boton borrar respuesta
   .on('click', '.botonBorrarRespuesta', function() {
     var $row = $(this).parents('.form-group'),
       $option = $row.find('[name="option[]"]');

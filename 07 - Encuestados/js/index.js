@@ -4,10 +4,12 @@ var vistaAdmin = new VistaAdministrador(modelo, new Controlador(modelo), {
   'botonEditarPregunta': $('#editarPregunta'),
   'botonBorrarPregunta': $('#borrarPregunta'),
   'borrarTodo': $('#borrarTodo'),
+  'reiniciar': $('#reiniciarVotacion'),
   'pregunta': $('#pregunta'),
   'respuesta': $('#respuesta'),
   'formulario': $('localStorageForm'),
   'botonAgregarPregunta': $('#agregarPregunta'),
+  'botonAgregarRespuesta': $('.botonAgregarRespuesta'),
   'muestraDeRespuestas': $('.panel-body')
 });
 vistaAdmin.inicializar();
