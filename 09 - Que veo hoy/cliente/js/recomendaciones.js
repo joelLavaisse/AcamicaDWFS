@@ -146,6 +146,7 @@ function ControladorRecomendaciones() {
             this.resultados.shift();
             //se guardan los datos de la pelicula que se esta mostrando actualmente
             this.pelicula_actual = pelicula_mostrar;
+            console.log(this.pelicula_actual);
             //se ejecuta la funcion mostrarPelicula() pasandole como parametro la pelicula que debe mostrar
             this.mostrarPelicula(pelicula_mostrar);
         }
