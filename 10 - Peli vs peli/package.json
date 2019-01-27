@@ -1,0 +1,26 @@
+{
+  "name": "peli-vs-peli",
+  "version": "1.0.0",
+  "description": "Proyecto 10 del curso de DWFS de Acamica",
+  "main": "index.js",
+  "scripts": {
+    "start-dev": "nodemon servidor/server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/joelLavaisse/AcamicaDWFS.git"
+  },
+  "author": "Joel Lavaisse",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/joelLavaisse/AcamicaDWFS/issues"
+  },
+  "homepage": "https://github.com/joelLavaisse/AcamicaDWFS#readme",
+  "dependencies": {
+    "body-parser": "^1.18.3",
+    "cors": "^2.8.5",
+    "express": "^4.16.4",
+    "mysql": "^2.16.0",
+    "nodemon": "^1.18.9"
+  }
+}
