@@ -1,0 +1,152 @@
+/*---	CSS reset	---*/
+
+* {
+	box-sizing: border-box;
+	font-family: 'Quicksand', sans-serif;
+	font-weight: normal;
+	margin: 0;
+	padding: 0;
+}
+
+/*---	Estilo general	---*/
+
+body {
+	background-color: #857671;
+}
+
+h1 {
+	color: #fff;
+	text-align: center;
+	font-size: 3.3vw;
+	background-color: #ff6d24;
+}
+
+h2 {
+  color: #e9dcbe;
+	font-size: 1.4vw;
+	text-align: center;
+}
+
+h3 {
+	color: #fff;
+	font-weight: bold;
+	font-size: 1.5vw;
+	border-bottom: 1.5px solid #8e8b82;
+	padding-bottom: 0.3%;
+	margin-bottom: 1.5%;
+}
+
+h4 {
+	color: #e2d1aa;
+	font-weight: bold;
+	font-size: 1.1vw;
+	text-align: right;
+}
+
+p, ul, dl {
+  color: #e2ded3;
+	font-size: 1vw;
+	margin-bottom: 2%;
+  list-style: none;
+  padding: 0;
+}
+
+/*---	Barra lateral	---*/
+
+.barra-lateral {
+	width: 18%;
+	height: 100%;
+	position: fixed;
+	background-color: #4e413b;
+	box-shadow: 0px 0px 5px 0px rgba(0,0,0,0.5);
+}
+
+.barra-lateral__avatar {
+	width: 100%;
+	display: block;
+}
+
+.barra-lateral__links {
+	text-align: center;
+	margin-top: 5%;
+}
+
+.barra-lateral__links a {
+	color: #8e8b82;
+	text-decoration: none;
+	font-size: 1.2vw;
+	font-weight: bold;
+	display: block;
+	line-height: 2.3vw;
+}
+
+.barra-lateral__links a:hover {
+	color: #fff;
+	background-color: #8e8b82;
+}
+/*---	Contenido general	---*/
+.contenido {
+	width: 80%;
+	margin: 0 1% 0 20%;
+	padding: 1%;
+}
+
+/*---	Seccion "Quien Soy"	---*/
+
+ul.contenido-quien-soy__datos {
+	display: inline-block;
+	width: 66%;
+}
+
+ul.contenido-quien-soy__datos li{
+	font-weight: bold;
+	line-height: 1.75em;
+}
+
+p.contenido-quien-soy__presentacion {
+	display: inline-block;
+	vertical-align: top;
+	text-align: right;
+	width: 30%;
+	margin-right: 3%;
+	font-size: 1.25vw;
+	font-style: italic;
+}
+
+/*---	Estilo de datos en las secciones ---*/
+
+li.item {
+	width: 30%;
+	margin-right: 3%;
+	display: inline-block;
+	vertical-align: top;
+}
+
+li.datos {
+	display: inline-block;
+	width: 66%;
+	margin-bottom: 2%;
+}
+
+li span {
+	display: block;
+}
+
+/*---	Seccion "Portfolio"	---*/
+
+.contenido-portfolio h3 {
+	margin-bottom: 0;
+}
+
+.contenido-portfolio-proyectos {
+	text-align: center;
+	margin: 0;
+}
+
+.portfolio__icono {
+	display: inline;
+}
+
+.icono__imagen {
+	width: 10.4%;
+}
