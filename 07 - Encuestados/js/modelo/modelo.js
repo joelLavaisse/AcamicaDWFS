@@ -2,7 +2,7 @@
  * Modelo
  */
 var Modelo = function() {
-  this.preguntas = [];
+  this.preguntas = JSON.parse(localStorage.getItem('preguntas')) || [];
   this.ultimoId = 0;
 
   //inicializacion de eventos

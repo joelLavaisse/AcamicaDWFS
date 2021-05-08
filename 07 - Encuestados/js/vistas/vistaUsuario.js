@@ -6,7 +6,6 @@ var VistaUsuario = function(modelo, controlador, elementos) {
   this.controlador = controlador;
   this.elementos = elementos;
   var contexto = this;
-  this.modelo.preguntas = JSON.parse(localStorage.getItem('preguntas'));
 
   //suscripcion a eventos del modelo
   this.modelo.listaModificada.suscribir(function() {

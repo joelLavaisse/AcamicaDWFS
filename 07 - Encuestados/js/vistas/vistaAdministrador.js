@@ -6,7 +6,6 @@ var VistaAdministrador = function(modelo, controlador, elementos) {
   this.controlador = controlador;
   this.elementos = elementos;
   var contexto = this;
-  this.modelo.preguntas = JSON.parse(localStorage.getItem('preguntas'));
 
   // suscripción de observadores
   this.modelo.listaModificada.suscribir(function() {
@@ -43,11 +42,9 @@ VistaAdministrador.prototype = {
     var lista = this.elementos.lista;
     lista.html('');
     var preguntas = this.modelo.preguntas;
-    this.modelo.preguntas = preguntas;
     for (var i=0;i<preguntas.length;++i){
       lista.append(this.construirElementoPregunta(preguntas[i]));
     }
-    console.log(preguntas);
   },
 
   configuracionDeBotones: function(){
