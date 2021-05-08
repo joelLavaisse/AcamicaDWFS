@@ -1,6 +1,7 @@
 const express = require('express');
 const path = require('path');
 const queVeoHoyRoute = require('./09 - Que veo hoy/servidor/servidor');
+const peliVsPeliRoute = require('./10 - Peli vs peli/servidor/server');
 
 const app = express();
 const port = process.env.PORT || 3000;
@@ -14,10 +15,11 @@ app.use('/reservando', express.static(path.join(__dirname, '06 - Reservando')));
 app.use('/encuestados', express.static(path.join(__dirname, '07 - Encuestados')));
 app.use('/mapa-interactivo', express.static(path.join(__dirname, '08 - Mapa interactivo')));
 app.use('/que-veo-hoy', express.static(path.join(__dirname, '09 - Que veo hoy/cliente')));
-app.use('/peli-vs-peli', express.static(path.join(__dirname, '10 - Peli vs peli')));
+app.use('/peli-vs-peli', express.static(path.join(__dirname, '10 - Peli vs peli/cliente')));
 
 // APIs proyectos 09 y 10
 app.use('/api/que-veo-hoy', queVeoHoyRoute);
+app.use('/api/peli-vs-peli', peliVsPeliRoute);
 
 app.use('/', (req, res) => res.send('aca toy!'));
 
