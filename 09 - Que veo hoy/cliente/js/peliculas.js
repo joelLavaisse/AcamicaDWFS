@@ -1,9 +1,9 @@
 //ip y puerto al que se le realizaran los pedidos
-var servidor = 'http://localhost:8080';
-$(document).ready(function() {
+var servidor = '/api/que-veo-hoy';
+$(document).ready(function () {
     //se hace el pedido al backend de todos los generos para cargalos en el listado de géneros
     $.getJSON(servidor + "/generos",
-        function(data) {
+        function (data) {
             for (i = 0; i < data.generos.length; i++) {
                 //se duplica una opcion de la lista de selección
                 var opcion = $(".genero-select option[value='0']").clone();
@@ -18,7 +18,7 @@ $(document).ready(function() {
 
     var controladorPeliculas = new ControladorPeliculas();
     //se le asigna la funcion buscarPeliculas() al boton de buscar
-    $('.buscar').click(function() {
+    $('.buscar').click(function () {
         $(".alerta-resultados").hide();
         controladorPeliculas.buscarPeliculas();
     });
@@ -29,61 +29,61 @@ $(document).ready(function() {
 function ControladorPeliculas() {
     //esta funcion recibe la pagina y la cantidad de resultados que se quiere mostrar y se encarga de armar el pedido
     //que se le va a hacer al backend para obtener las peliculas
-    this.buscarPeliculas = function(pagina, cantidad) {
-            var self = this;
-            //se obtienen los valores por los cuales se va a filtrar
-            var titulo = $(".titulo-busqueda").val();
-            var genero = $(".genero-select option:selected").attr("value");
-            var orden = $(".orden-select option:selected").attr("value");
-            var anio = $(".anio-busqueda").val();
-            
-            //si se recibio como parametro el numero de pagina se envia ese valor, sino, se pide la pagina 1
-            var pagina_solicitada = (pagina) ? pagina : 1;
+    this.buscarPeliculas = function (pagina, cantidad) {
+        var self = this;
+        //se obtienen los valores por los cuales se va a filtrar
+        var titulo = $(".titulo-busqueda").val();
+        var genero = $(".genero-select option:selected").attr("value");
+        var orden = $(".orden-select option:selected").attr("value");
+        var anio = $(".anio-busqueda").val();
 
-            //se crea un objeto que tenga como atributos los parámetros que vamos a pasarle al backend
-            var query_params = {
-                pagina: pagina_solicitada
-            };
-            //solo se envia el parametro titulo si hay algun valor para filtrar por ese campo
-            if (titulo) {
-                query_params.titulo = titulo;
-            }
+        //si se recibio como parametro el numero de pagina se envia ese valor, sino, se pide la pagina 1
+        var pagina_solicitada = (pagina) ? pagina : 1;
 
-            //Si el value del género que se seleccionó es igual a 0, significa que se selecciono la opcion
-            //"Todos". Por eso, si se elige ver todos los generos, no se envia ese parametro de filtro.
-            if (genero != 0) {
-                query_params.genero = genero;
-            }
+        //se crea un objeto que tenga como atributos los parámetros que vamos a pasarle al backend
+        var query_params = {
+            pagina: pagina_solicitada
+        };
+        //solo se envia el parametro titulo si hay algun valor para filtrar por ese campo
+        if (titulo) {
+            query_params.titulo = titulo;
+        }
 
-            //solo se envia el parametro año si hay algun valor para filtrar por ese campo
-            if (anio) {
-                query_params.anio = anio;
-            }
+        //Si el value del género que se seleccionó es igual a 0, significa que se selecciono la opcion
+        //"Todos". Por eso, si se elige ver todos los generos, no se envia ese parametro de filtro.
+        if (genero != 0) {
+            query_params.genero = genero;
+        }
 
-            //si se recibio como parametro la cantidad de resultados a mostrar se envia ese valor, sino, se piden 52 peliculas
-            query_params.cantidad = (cantidad) ? cantidad : 52;
+        //solo se envia el parametro año si hay algun valor para filtrar por ese campo
+        if (anio) {
+            query_params.anio = anio;
+        }
 
-            //el value de cada opcion de la lista de seleccion de "Ordenar por" esta formado por:
-            //nombre de la columna por la que se va a ordenar - tipo de orden (descendente o ascendente)
-            //aca se divide el value de la opcion seleccionada en dos campos, la columna orden y el tipo de orden
-            var orden_array = orden.split("-");
-            query_params.columna_orden = orden_array[0];
-            query_params.tipo_orden = orden_array[1];
+        //si se recibio como parametro la cantidad de resultados a mostrar se envia ese valor, sino, se piden 52 peliculas
+        query_params.cantidad = (cantidad) ? cantidad : 52;
 
-            var query = $.param(query_params);
+        //el value de cada opcion de la lista de seleccion de "Ordenar por" esta formado por:
+        //nombre de la columna por la que se va a ordenar - tipo de orden (descendente o ascendente)
+        //aca se divide el value de la opcion seleccionada en dos campos, la columna orden y el tipo de orden
+        var orden_array = orden.split("-");
+        query_params.columna_orden = orden_array[0];
+        query_params.tipo_orden = orden_array[1];
 
-            //se hace el pedido al backend de las peliculas
-            $.getJSON(servidor + "/peliculas?" + query,
-                function(data) {
-                    //se ejecuta la funcion cargarListado() pasandole como parametro las peliculas que se obtuvieron
-                    self.cargarListado(data.peliculas);
-                    //se ejecuta la fucion cargarBotones() pasandole el total de peliculas que se obtienen como resultado
-                    self.cargarBotones(data.total);
-                });
-        },
+        var query = $.param(query_params);
+
+        //se hace el pedido al backend de las peliculas
+        $.getJSON(servidor + "/peliculas?" + query,
+            function (data) {
+                //se ejecuta la funcion cargarListado() pasandole como parametro las peliculas que se obtuvieron
+                self.cargarListado(data.peliculas);
+                //se ejecuta la fucion cargarBotones() pasandole el total de peliculas que se obtienen como resultado
+                self.cargarBotones(data.total);
+            });
+    },
 
         //esta función recibe como parámetro todas las películas que se quieren mostrar y se encarga de crear los elementos html correspondientes
-        this.cargarListado = function(peliculas) {
+        this.cargarListado = function (peliculas) {
             //se vacia el contenedor de las peliculas
             $(".contenedor-peliculas").empty();
             var self = this;
@@ -101,7 +101,7 @@ function ControladorPeliculas() {
                     pelicula.find(".titulo").html(peliculas[i].titulo);
                     pelicula.attr("id", peliculas[i].id);
                     //cuando se haga click en una película, se va a redirigir la aplicación a la página info.html  
-                    pelicula.click(function() {
+                    pelicula.click(function () {
                         window.location.href = "info.html?id=" + this.id;
                     });
                     //se agrega la pelicula que al contenedor de peliculas
@@ -117,7 +117,7 @@ function ControladorPeliculas() {
 
         //esta función recibe como parámetro el total de películas que se obtienen como resultado. Según esa cantidad 
         //crea los botones de la paginación y les da la funcionalidad correspondiente
-        this.cargarBotones = function(total) {
+        this.cargarBotones = function (total) {
             //se establece que se van a mostrar 52 resultados por pagina
             var cantidad_por_pagina = 52;
             var self = this;
@@ -140,7 +140,7 @@ function ControladorPeliculas() {
                 //se muestra el botón creado
                 boton.show();
             }
-            $(".boton-pagina").click(function() {
+            $(".boton-pagina").click(function () {
                 //cada boton tiene como funcionalidad buscarPeliculas(). A esta funcion se le pasa como parametro
                 //el atributo "numero-pagina".
                 self.buscarPeliculas($(this).attr("numero-pagina"));
