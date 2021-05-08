@@ -1,25 +1,30 @@
 const express = require('express');
-const path = require('path');
-const queVeoHoyRoute = require('./09 - Que veo hoy/servidor/servidor');
-const peliVsPeliRoute = require('./10 - Peli vs peli/servidor/server');
 
 const app = express();
 const port = process.env.PORT || 3000;
 
-app.use('/cv-online', express.static(path.join(__dirname, '01 - CV online')));
-app.use('/home-banking', express.static(path.join(__dirname, '02 - Home banking')));
-app.use('/rompecabezas', express.static(path.join(__dirname, '03 - Rompecabezas')));
-app.use('/pixel-art', express.static(path.join(__dirname, '04 - Pixel art')));
-app.use('/ciudad-zombie', express.static(path.join(__dirname, '05 - Ciudad zombie')));
-app.use('/reservando', express.static(path.join(__dirname, '06 - Reservando')));
-app.use('/encuestados', express.static(path.join(__dirname, '07 - Encuestados')));
-app.use('/mapa-interactivo', express.static(path.join(__dirname, '08 - Mapa interactivo')));
-app.use('/que-veo-hoy', express.static(path.join(__dirname, '09 - Que veo hoy/cliente')));
-app.use('/peli-vs-peli', express.static(path.join(__dirname, '10 - Peli vs peli/cliente')));
+// Rutas
+const cvOnline = require('./01 - CV online');
+const homeBanking = require('./02 - Home banking');
+const rompecabezas = require('./03 - Rompecabezas');
+const pixelArt = require('./04 - Pixel art');
+const ciudadZombie = require('./05 - Ciudad zombie');
+const reservando = require('./06 - Reservando');
+const encuestados = require('./07 - Encuestados');
+const mapaInteractivo = require('./08 - Mapa Interactivo');
+const queVeoHoy = require('./09 - Que veo hoy');
+const peliVsPeli = require('./10 - Peli vs peli');
 
-// APIs proyectos 09 y 10
-app.use('/api/que-veo-hoy', queVeoHoyRoute);
-app.use('/api/peli-vs-peli', peliVsPeliRoute);
+app.use('/cv-online', cvOnline);
+app.use('/home-banking', homeBanking);
+app.use('/rompecabezas', rompecabezas);
+app.use('/pixel-art', pixelArt);
+app.use('/ciudad-zombie', ciudadZombie);
+app.use('/reservando', reservando);
+app.use('/encuestados', encuestados);
+app.use('/mapa-interactivo', mapaInteractivo);
+app.use('/que-veo-hoy', queVeoHoy);
+app.use('/peli-vs-peli', peliVsPeli);
 
 app.use('/', (req, res) => res.send('aca toy!'));
 

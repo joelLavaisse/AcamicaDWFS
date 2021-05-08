@@ -1,4 +1,4 @@
-var servidor = '/api/que-veo-hoy';
+var servidor = '/que-veo-hoy/api';
 $(document).ready(function () {
     var controladorRecomendaciones = new ControladorRecomendaciones();
     //cuando el documento esta listo se inicializan las preguntas y se le da funcionalidad a los botones

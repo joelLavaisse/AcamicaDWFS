@@ -1,5 +1,5 @@
 // Esta es la ip y puerto en que necesitamos que esté el backend disponible
-var server = '/api/peli-vs-peli';
+var server = '/peli-vs-peli/api';
 
 function CompetenciasController() {
 

@@ -1,5 +1,5 @@
 //ip y puerto al que se le realizaran los pedidos
-var servidor = '/api/que-veo-hoy';
+var servidor = '/que-veo-hoy/api';
 $(document).ready(function () {
     //se hace el pedido al backend de todos los generos para cargalos en el listado de géneros
     $.getJSON(servidor + "/generos",

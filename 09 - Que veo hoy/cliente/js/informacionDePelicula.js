@@ -1,5 +1,5 @@
 (function () {
-    var server = '/api/que-veo-hoy';
+    var server = '/que-veo-hoy/api';
     var params = location.search
     //se obtiene el id de la película de la cuál tenemos que obtener la información
     var id = (params.split("="))[1];
